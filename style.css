@@ -1,0 +1,70 @@
+input, textarea {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+textarea {
+    resize: none;
+    width: 50em;
+}
+
+.element {
+    margin: 1em 0;
+}
+
+.button-list {
+    display: flex;
+    gap: 0.25em;
+}
+
+.block {
+    margin: 2em 0;
+}
+
+.heading1 input {
+    font-size: 2em;
+}
+
+.heading2 input {
+    font-size: 1.8em;
+}
+
+.heading3 input {
+    font-size: 1.6em;
+}
+
+.heading4 input {
+    font-size: 1.4em;
+}
+
+.heading5 input {
+    font-size: 1.2em;
+}
+
+.heading6 input {
+    font-size: 1.1em;
+}
+
+.info textarea {
+    background-color: lightblue;
+}
+
+.note textarea {
+    background-color: rgb(78, 123, 182);
+}
+
+.warning textarea {
+    background-color: rgb(255, 212, 156);
+}
+
+.danger textarea {
+    background-color: rgb(231, 132, 132);
+}
+
+.example textarea {
+    background-color: rgb(209, 128, 229);
+}
+
+.paragraph textarea {
+    font-family: Arial, Helvetica, sans-serif;
+}

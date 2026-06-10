@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css" class="css">
+    <title>DocMaker</title>
+</head>
+<body>
+    <script type="module" src="./app.js"></script>
+
+    <label for="fileName">Nom du fichier</label>
+    <input type="text" id="fileName" size="20">
+    <input type="text" value=".md" readonly>
+
+    <hr>
+    
+    <div id="editor"></div>
+
+    <select id="add">
+        <option value="">Ajouter un élément</option>
+
+        <option value="line">Ligne</option>
+
+        <option value="heading2">Titre de niveau 2</option>
+        <option value="heading3">Titre de niveau 3</option>
+        <option value="heading4">Titre de niveau 4</option>
+        <option value="heading5">Titre de niveau 5</option>
+        <option value="heading6">Titre de niveau 6</option>
+
+        <option value="paragraph">Paragraphe</option>
+        
+        <option value="image">Image</option>
+
+        <option value="note">Encadré note</option>
+        <option value="info">Encadré info</option>
+        <option value="warning">Encadré warning</option>
+        <option value="danger">Encadré danger</option>
+        <option value="example">Encadré exemple</option>
+        
+        <option value="code">Bloc de code</option>
+        <option value="formula">Formule mathématique</option>
+    </select>
+
+    <button id="export">Exporter en Markdown</button>
+</body>
+</html>
