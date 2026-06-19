@@ -41,7 +41,8 @@ const BLOCK_DEFAULTS = {
     info: { type: "admonition", category: "info", title: "", content: "", collapsible: false, expanded: false },
     warning: { type: "admonition", category: "warning", title: "", content: "", collapsible: false, expanded: false },
     danger: { type: "admonition", category: "danger", title: "", content: "", collapsible: false, expanded: false },
-    example: { type: "admonition", category: "example", title: "", content: "", collapsible: false, expanded: false }, 
+    example: { type: "admonition", category: "example", title: "", content: "", collapsible: false, expanded: false },
+    success: { type: "admonition", category: "success", title: "", content: "", collapsible: false, expanded: false },
     line: { type: "line" },
     code: { type: "code", language: "matlab", content: "" },
     formula: { type: "formula", content: "", caption: "" },
@@ -59,6 +60,7 @@ const editor = document.getElementById("editor");
 const selectAdd = document.getElementById("add");
 const fileName = document.getElementById("fileName") as HTMLInputElement;
 const buttonImport = document.getElementById("import");
+const inputImport = document.getElementById("input-import");
 const buttonExport = document.getElementById("export");
 const buttonBold = document.getElementById("bold");
 const buttonItalic = document.getElementById("italic");
@@ -124,7 +126,11 @@ export function addBlock(type: string, previous?: string | undefined) {
     renderEditor();
 }
 
-buttonImport?.addEventListener("input", (e: InputEvent) => {
+buttonImport?.addEventListener("click", () => {
+    inputImport?.click();
+})
+
+inputImport?.addEventListener("input", (e: InputEvent) => {
     importMarkdown(e);
 });
 

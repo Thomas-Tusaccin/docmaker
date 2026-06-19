@@ -2,14 +2,6 @@ body {
     margin: 0;
 }
 
-header {
-    background-color: lightgrey;
-    position: sticky;
-    top: 0;
-
-    padding: 1em;
-}
-
 main {
     padding: 1em;
     width: 50%;
@@ -31,10 +23,12 @@ input, textarea, [contenteditable="true"] {
     padding: 12px;
     border: solid 1px gray;
     border-radius: 4px;
+    align-items: stretch;
 }
 
 select {
     padding: 0.5em;
+    width: 155px;
 }
 
 .block {
@@ -48,6 +42,9 @@ select {
 
 .block-content {
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
 }
 
 .block:hover {
@@ -74,6 +71,15 @@ select {
     cursor: text;
 }
 
+.admonition {
+    padding: 1em;
+    border-radius: 15px;
+}
+
+.admonition [contenteditable="true"], .admonition input {
+    border: none;
+}
+
 .heading1 [contenteditable="true"] {
     font-size: 2em;
 }
@@ -98,28 +104,36 @@ select {
     font-size: 1.1em;
 }
 
-.info [contenteditable="true"] {
-    background-color: rgb(201, 241, 255);
+.info {
+    background-color: #00b8d41a;
 }
 
-.note [contenteditable="true"] {
-    background-color: rgb(126, 171, 230);
+.note {
+    background-color: #448aff1a;
 }
 
-.warning [contenteditable="true"] {
-    background-color: rgb(255, 212, 156);
+.warning  {
+    background-color: #ff91001a;
 }
 
-.danger [contenteditable="true"] {
-    background-color: rgb(231, 132, 132);
+.success {
+    background-color: #00c8531a;
 }
 
-.example [contenteditable="true"] {
-    background-color: rgb(209, 128, 229);
+.danger {
+    background-color: #ff17441a;
 }
 
-[contenteditable="true"] {
+.example {
+    background-color: #7c4dff1a;
+}
+
+[contenteditable="true"], ol, label {
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.code div {
+    font-family: monospace;
 }
 
 code {
@@ -128,6 +142,12 @@ code {
 
 hr {
     margin: 0.5em;
+}
+
+.icon {
+    width: 35px;
+    height: 35px;
+    border: none;
 }
 
 
@@ -146,7 +166,7 @@ hr {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 200px;
+  height: 200px;
   border: 2px dashed #cbd5e1;
   border-radius: 8px;
   cursor: pointer;
@@ -195,4 +215,78 @@ hr {
 /* Classes utilitaires pour basculer l'affichage */
 .hidden {
   display: none !important;
+}
+
+
+
+ul, ol {
+    
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+
+    border-radius: 5px;
+
+    padding: 1em;
+    background-color: rgba(128, 128, 128, 0.15);
+}
+
+ul {
+    list-style: none;
+    margin: 1em 0;
+}
+
+ol {
+    padding: 2em;
+}
+
+.item-content-wrapper div {
+    margin-bottom: 0.5em;
+}
+
+
+
+header {
+    background-color: lightgrey;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    
+    display: flex;
+    gap: 0.5em;
+    padding: 1em;
+}
+
+header input, header button {
+    flex-grow: 0;
+    border-radius: 4px;
+    border: none;
+}
+
+#file-name-div {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    align-items: stretch;
+    margin-left: auto;
+}
+
+#file-name-div label {
+    align-self: center;
+}
+
+input:read-only {
+    background-color: rgba(170, 170, 170, 0.5);
+}
+
+@media screen and (max-width: 1024px) {
+    main {
+        width: 100%;
+    }
+
+    .block {
+        flex-direction: column;
+        align-items: stretch;
+        box-sizing: border-box;
+    }
 }

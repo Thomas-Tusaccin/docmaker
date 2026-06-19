@@ -12,6 +12,7 @@ function wrapBlock(block: HTMLDivElement, data: Blocks.EditorBlock) {
 
     const buttonDelete = document.createElement("button");
     buttonDelete.textContent = "X";
+    buttonDelete.className = "icon";
 
     buttonDelete.addEventListener("click", () => {
         deleteBlockById(data.id);
@@ -117,11 +118,11 @@ export function createImageBlock(data: Blocks.ImageBlock, onUpdate: (id: string,
     placeholder.className = 'upload-placeholder';
 
     const icon = document.createElement('span');
-    icon.className = 'icon';
-    icon.textContent = '📁';
+    icon.textContent = '+';
+    icon.style.fontSize = "4em";
 
     const text = document.createElement('p');
-    text.textContent = 'Cliquez ou glissez une image ici';
+    text.textContent = 'Cliquez pour importer une image';
 
     placeholder.appendChild(icon);
     placeholder.appendChild(text);
@@ -244,7 +245,7 @@ export function createCodeBlock(data: Blocks.CodeBlock, onUpdate: (id: string, f
     const block = document.createElement("div");
 
     const inputLanguage = document.createElement("input");
-    const inputContent = document.createElement("textarea");
+    const inputContent = document.createElement("div");
 
     inputLanguage.placeholder = `Langage utilisé (optionnel)`;
     inputLanguage.value = data.language ?? "";
@@ -253,11 +254,12 @@ export function createCodeBlock(data: Blocks.CodeBlock, onUpdate: (id: string, f
         onUpdate(data.id, { language: (e.target as HTMLInputElement).value });
     });
 
-    inputContent.placeholder = `Écrivez votre code ici...`;
-    inputContent.value = data.content ?? "";
+    inputContent.contentEditable = "true";
+    inputContent.setAttribute("data-placeholder", `Écrivez votre code ici...`);
+    inputContent.innerHTML = data.content ?? "";
 
     inputContent.addEventListener('input', (e) => {
-        onUpdate(data.id, { content: (e.target as HTMLInputElement).value });
+        onUpdate(data.id, { content: (e.target as HTMLInputElement).innerHTML });
     });
 
     block.append(inputLanguage, inputContent);
@@ -274,7 +276,7 @@ export function createFormulaBlock(data: Blocks.FormulaBlock, onUpdate: (id: str
     const inputCaption = document.createElement("input");
     const inputIndex = document.createElement("input");
 
-    inputContent.placeholder = `Écrivez votre formule ici...`;
+    inputContent.placeholder = `Écrivez votre formule LaTeX ici...`;
     inputContent.value = data.content ?? "";
 
     inputContent.addEventListener('input', (e) => {
@@ -377,6 +379,7 @@ export function createListBlock(
     // 4. Bouton pour ajouter un élément au niveau actuel
     const addItemBtn = document.createElement("button");
     addItemBtn.textContent = "+ Ajouter à la liste";
+    addItemBtn.style.flexGrow = "1";
 
     addItemBtn.addEventListener("click", () => {
         const newItem = { id: crypto.randomUUID(), type: "listitem", content: "", items: [] } as Blocks.ListItem;

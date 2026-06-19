@@ -9,6 +9,9 @@
     <script type="module" src="./main.ts"></script>
 
     <header>
+        <input type="file" class="hidden" accept="text/markdown" id="input-import">
+        <button id="import">Importer un fichier</button>
+    
         <select id="add">
             <option value="" disabled selected>Ajouter</option>
 
@@ -31,6 +34,7 @@
             <option value="note">Encadré note</option>
             <option value="info">Encadré info</option>
             <option value="warning">Encadré warning</option>
+            <option value="success">Encadré succès</option>
             <option value="danger">Encadré danger</option>
             <option value="example">Encadré exemple</option>
             
@@ -38,17 +42,19 @@
             <option value="formula">Formule mathématique</option>
         </select>
 
-        <button id="export">Exporter en Markdown</button>
-        <input type="file" accept="text/md" id="import">
+        
 
-        <button id="bold" class="edit-button">G</button>
-        <button id="italic" class="edit-button">I</button>
-        <button id="highlight" class="edit-button">H</button>
-        <button id="inline-code" class="edit-button">C</button>
+        <button id="bold" class="edit-button icon">G</button>
+        <button id="italic" class="edit-button icon">I</button>
+        <button id="highlight" class="edit-button icon">H</button>
+        <button id="inline-code" class="edit-button icon">C</button>
 
-        <label for="fileName">Nom du fichier</label>
-        <input type="text" id="fileName" size="20">
-        <input type="text" value=".md" readonly>
+        <div id="file-name-div">
+            <label for="fileName">Nom du fichier</label>
+            <input type="text" id="fileName" size="20">
+            <input type="text" value=".md" size="3" readonly>
+            <button id="export">Exporter en Markdown</button>
+        </div>
     </header>
 
     <main>
